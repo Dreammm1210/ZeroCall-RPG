@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "id": "zerocallrpg",
+  "version": "${version}",
+  "name": "Zero Call RPG",
+  "description": "Lightweight survival RPG: 8 classes, unique buffs, elite monsters and 3 command-placed dungeons. No quests or shop.",
+  "authors": ["Zero Call"],
+  "license": "MIT",
+  "environment": "*",
+  "icon": "assets/zerocallrpg/icon.png",
+  "entrypoints": {
+    "main": ["vn.zerocall.rpg.ZeroCallRpg"],
+    "client": ["vn.zerocall.rpg.client.ZeroCallRpgClient"]
+  },
+  "depends": {
+    "fabricloader": ">=0.18.4",
+    "minecraft": "1.21.11",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}

@@ -1,0 +1,30 @@
+ZERO CALL RPG 0.2.0 — DU AN GITHUB BUILD JAR
+Minecraft Java 1.21.11 / Fabric / Java 21
+
+A. DUA MA NGUON LEN GITHUB
+1. Truy cap https://github.com/new va tao repository moi, vi du ZeroCall-RPG.
+   Khong chon Add README hoac Add .gitignore, vi goi nay da co san.
+2. Giai nen ZIP nay vao mot thu muc tren PC.
+3. Vao trang repo -> Add file -> Upload files. Tai len TOAN BO file va thu muc
+   DA GIAI NEN, KHONG tai nguyen file ZIP nhu mot file duy nhat.
+4. Sau khi Commit changes, kiem tra co file:
+   .github/workflows/build.yml
+
+B. BUILD JAR (TU DONG KHI PUSH HOAC CHAY THU CONG)
+1. Trong repo, bam tab Actions -> Build Zero Call RPG JAR.
+2. Neu can, bam Run workflow -> Run workflow (hoac doi luot build tu dong).
+3. Neu co dau tick xanh, mo luot build -> muc Artifacts.
+4. Tai 'ZeroCall-RPG-Fabric-1.21.11-JAR' (GitHub tai ve mot ZIP).
+5. GIAI NEN artifact ZIP, lay file .jar (KHONG lay -sources.jar/-dev.jar)
+   cho vao thu muc mods cua Fabric 1.21.11 tren Zalith Launcher.
+6. Can cai Fabric API. Neu choi server multiplayer, cai mod o ca server
+   va client; can backup world truoc khi tao dungeon.
+
+C. NEU ACTIONS BI DO
+- Mo Actions -> luot build do -> job build -> buoc bao do -> mo log.
+- Gui noi dung log cho ChatGPT de sua loi API va build.
+- Day la du an ma nguon CHUA DUOC BUILD/TEST voi Minecraft that.
+- Khong tu doi ten file .zip thanh .jar.
+
+MOD CO: 8 class + buff, Elite/Champion, 3 dungeon/ boss, level/stat/HUD.
+MOD KHONG CO: quest, shop, coin; dungeon khong spawn tu nhien.
