@@ -1,0 +1,57 @@
+
+name: Build Zero Call RPG JAR
+
+on:
+  push:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Install Java 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v6
+        with:
+          gradle-version: '9.2.1'
+
+      - name: Test RPG logic
+        run: bash tests/test-logic.sh
+
+      - name: Build Minecraft Fabric mod
+        run: gradle --no-daemon clean build
+
+      - name: Collect JAR
+        shell: bash
+        run: |
+          mkdir -p dist
+          for file in build/libs/*.jar; do
+            case "$file" in
+              *-sources.jar|*-dev.jar|*-javadoc.jar) continue ;;
+            esac
+            cp "$file" dist/
+          done
+          test -n "$(find dist -type f -name '*.jar' -print -quit)"
+          for file in dist/*.jar; do
+            unzip -p "$file" fabric.mod.json | grep -q 'zerocallrpg'
+          done
+
+      - name: Upload JAR
+        uses: actions/upload-artifact@v4
+        with:
+          name: ZeroCall-RPG-Fabric-1.21.11-JAR
+          path: dist/*.jar
+          if-no-files-found: error
